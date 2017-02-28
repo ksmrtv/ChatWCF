@@ -1,0 +1,10 @@
+D:\Other\github\WCFChat\Data\bin\Debug\Data.exe.config
+D:\Other\github\WCFChat\Data\bin\Debug\Data.exe
+D:\Other\github\WCFChat\Data\bin\Debug\Data.pdb
+D:\Other\github\WCFChat\Data\bin\Debug\EntityFramework.dll
+D:\Other\github\WCFChat\Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Other\github\WCFChat\Data\bin\Debug\EntityFramework.xml
+D:\Other\github\WCFChat\Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Other\github\WCFChat\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+D:\Other\github\WCFChat\Data\obj\Debug\Data.exe
+D:\Other\github\WCFChat\Data\obj\Debug\Data.pdb

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="GroupValidation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GroupNameIsExists" />
+      <xs:enumeration value="GroupCreateSuccess" />
+      <xs:enumeration value="GroupCreateError" />
+      <xs:enumeration value="GroupNotFound" />
+      <xs:enumeration value="GroupEditSuccess" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GroupValidation" nillable="true" type="tns:GroupValidation" />
+</xs:schema>

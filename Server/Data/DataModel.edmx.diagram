@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a53671ea36f74b91936af3a93662a95c" Name="Diagram1" >
+        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="1.25" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.Group" Width="1.5" PointX="7.5" PointY="2" />
+        <EntityTypeShape EntityType="DataModel.ReadMessage" Width="1.5" PointX="1.875" PointY="4" />
+        <AssociationConnector Association="DataModel.UserGroup" />
+        <AssociationConnector Association="DataModel.FK_UserReadMessage" />
+        <EntityTypeShape EntityType="DataModel.Message" Width="1.5" PointX="4.875" PointY="1.375" />
+        <AssociationConnector Association="DataModel.FK_GroupMessage" />
+        <AssociationConnector Association="DataModel.FK_MessageReadMessage" />
+        <AssociationConnector Association="DataModel.FK_UserMessage" />
+        <AssociationConnector Association="DataModel.FK_UserMessage1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

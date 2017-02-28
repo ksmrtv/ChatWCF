@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="DataModel.User" />
+    <EntitySet Name="Groups" EntityType="DataModel.Group" />
+    <EntitySet Name="ReadMessages" EntityType="DataModel.ReadMessage" />
+    <AssociationSet Name="UserGroup" Association="DataModel.UserGroup">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Group" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserReadMessage" Association="DataModel.FK_UserReadMessage">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ReadMessage" EntitySet="ReadMessages" />
+    </AssociationSet>
+    <EntitySet Name="Messages" EntityType="DataModel.Message" />
+    <AssociationSet Name="FK_GroupMessage" Association="DataModel.FK_GroupMessage">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MessageReadMessage" Association="DataModel.FK_MessageReadMessage">
+      <End Role="Message" EntitySet="Messages" />
+      <End Role="ReadMessage" EntitySet="ReadMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserMessage" Association="DataModel.FK_UserMessage">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserMessage1" Association="DataModel.FK_UserMessage1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Groups" Relationship="DataModel.UserGroup" FromRole="User" ToRole="Group" />
+    <NavigationProperty Name="ReadMessages" Relationship="DataModel.FK_UserReadMessage" FromRole="User" ToRole="ReadMessage" />
+    <NavigationProperty Name="Messages" Relationship="DataModel.FK_UserMessage" FromRole="User" ToRole="Message" />
+    <NavigationProperty Name="Messages1" Relationship="DataModel.FK_UserMessage1" FromRole="User" ToRole="Message" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="DataModel.UserGroup" FromRole="Group" ToRole="User" />
+    <NavigationProperty Name="Messages" Relationship="DataModel.FK_GroupMessage" FromRole="Group" ToRole="Message" />
+  </EntityType>
+  <EntityType Name="ReadMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message_Id" Type="Int32" Nullable="false" />
+    <Property Name="IsRead" Type="Boolean" Nullable="false" />
+    <Property Name="User_Id" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="DataModel.FK_UserReadMessage" FromRole="ReadMessage" ToRole="User" />
+    <NavigationProperty Name="Message" Relationship="DataModel.FK_MessageReadMessage" FromRole="ReadMessage" ToRole="Message" />
+  </EntityType>
+  <Association Name="UserGroup">
+    <End Type="DataModel.User" Role="User" Multiplicity="*" />
+    <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_UserReadMessage">
+    <End Type="DataModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="DataModel.ReadMessage" Role="ReadMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReadMessage">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserFrom_Id" Type="Int32" Nullable="false" />
+    <Property Name="UserTo_Id" Type="Int32" />
+    <Property Name="GroupTo_Id" Type="Int32" />
+    <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsRead" Type="Boolean" Nullable="true" />
+    <NavigationProperty Name="Group" Relationship="DataModel.FK_GroupMessage" FromRole="Message" ToRole="Group" />
+    <NavigationProperty Name="ReadMessages" Relationship="DataModel.FK_MessageReadMessage" FromRole="Message" ToRole="ReadMessage" />
+    <NavigationProperty Name="User" Relationship="DataModel.FK_UserMessage" FromRole="Message" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="DataModel.FK_UserMessage1" FromRole="Message" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_GroupMessage">
+    <End Type="DataModel.Group" Role="Group" Multiplicity="0..1" />
+    <End Type="DataModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="GroupTo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MessageReadMessage">
+    <End Type="DataModel.Message" Role="Message" Multiplicity="1" />
+    <End Type="DataModel.ReadMessage" Role="ReadMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReadMessage">
+        <PropertyRef Name="Message_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserMessage">
+    <End Type="DataModel.User" Role="User" Multiplicity="1" />
+    <End Type="DataModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="UserFrom_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserMessage1">
+    <End Type="DataModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="DataModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="UserTo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

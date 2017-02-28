@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2c4fe9a2-fc13-46db-a522-7e9b49d3afe0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:15526/ServiceSendMessage.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceSendMessage.wsdl" MetadataType="Wsdl" ID="d5e63781-978e-431e-a3c2-4308930113cb" SourceId="1" SourceUrl="http://localhost:15526/ServiceSendMessage.svc?wsdl" />
+    <MetadataFile FileName="ServiceSendMessage.disco" MetadataType="Disco" ID="b0187ae8-f8a3-4f15-a417-ffb076775dff" SourceId="1" SourceUrl="http://localhost:15526/ServiceSendMessage.svc?disco" />
+    <MetadataFile FileName="ServiceSendMessage1.xsd" MetadataType="Schema" ID="95deb99b-2bef-4856-a705-f8f059f7c3b9" SourceId="1" SourceUrl="http://localhost:15526/ServiceSendMessage.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceSendMessage.xsd" MetadataType="Schema" ID="43141bb3-9eed-4955-9f5e-3e3630c0a56b" SourceId="1" SourceUrl="http://localhost:15526/ServiceSendMessage.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceSendMessage2.xsd" MetadataType="Schema" ID="beb8028c-fe6e-4122-84c9-6fb300096be5" SourceId="1" SourceUrl="http://localhost:15526/ServiceSendMessage.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceSendMessage3.xsd" MetadataType="Schema" ID="09addfc6-d52c-48f9-b39e-3a92abe734bc" SourceId="1" SourceUrl="http://localhost:15526/ServiceSendMessage.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
